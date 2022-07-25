@@ -278,12 +278,13 @@ goto :eof
 @ECHO ********************************************************************  >> MakeHex_Result.txt
 @ECHO %ESCNAME%  >> MakeHex_Result.txt
 @ECHO ********************************************************************  >> MakeHex_Result.txt
-%KeilPath%\AX51.exe "BLHeli_S.asm" DEFINE(ESCNO=%ESCNO%) DEFINE(MCU_48MHZ=%MCU_48MHZ%) DEFINE(FETON_DELAY=%FETON_DELAY%) OBJECT(Output\%ESCNAME%_%Revision%.OBJ) DEBUG MACRO NOMOD51 COND SYMBOLS PAGEWIDTH(120) PAGELENGTH(65) >> MakeHex_Result.txt
+%KeilPath%\AX51.exe "BLHeli_S.asm" DEFINE(ESCNO=%ESCNO%) DEFINE(MCU_48MHZ=%MCU_48MHZ%) DEFINE(FETON_DELAY=%FETON_DELAY%) OBJECT(Output\%ESCNAME%_%Revision%.OBJ) DEBUG MACRO NOMOD51 ERRORPRINT COND SYMBOLS PAGEWIDTH(120) PAGELENGTH(65) >> MakeHex_Result.txt
 %KeilPath%\LX51.exe "Output\%ESCNAME%_%Revision%.OBJ" TO "Output\%ESCNAME%_%Revision%.OMF" PAGEWIDTH (120) PAGELENGTH (65) >> MakeHex_Result.txt
 %KeilPath%\Ohx51 "Output\%ESCNAME%_%Revision%.OMF" "HEXFILE (Output\%ESCNAME%_%Revision%.HEX)" "H386" >> MakeHex_Result.txt
 copy "Output\%ESCNAME%_%Revision%.HEX" "Output\Hex\%ESCNAME%_%Revision%.HEX" > nul
 del "Output\%ESCNAME%_%Revision%.HEX" > nul
 @ECHO. >> MakeHex_Result.txt
+exit
 goto :eof
 
 :end
