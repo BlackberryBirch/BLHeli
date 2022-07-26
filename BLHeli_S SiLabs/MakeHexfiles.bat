@@ -14,7 +14,7 @@ RMDIR Output
 MKDIR Output
 MKDIR Output\Hex
 SET Revision=REV16_7
-SET KeilPath=C:\SiliconLabs\SimplicityStudio\v5_2\developer\toolchains\keil_8051\9.60\BIN
+SET KeilPath=C:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN
 
 @ECHO Revision: %Revision% >> MakeHex_Result.txt
 @ECHO Path for Keil toolchain: %KeilPath% >> MakeHex_Result.txt
