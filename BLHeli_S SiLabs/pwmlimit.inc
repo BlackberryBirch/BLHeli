@@ -81,3 +81,24 @@ set_pwm_limit_high_rpm_store:
 	mov	Pwm_Limit_By_Rpm, A
 
 	ret
+
+;**** **** **** **** **** **** **** **** **** **** **** **** ****
+;
+; Set startup PWM routine
+;
+; Either the SETTLE_PHASE or the STEPPER_PHASE flag must be set
+;
+; Used for pwm control during startup
+;
+;**** **** **** **** **** **** **** **** **** **** **** **** ****
+set_startup_pwm:	
+	; Adjust startup power
+	mov	A, #50						; Set power
+	mov	Temp2, #Pgm_Startup_Pwr_Decoded
+	mov	B, @Temp2
+	mul	AB
+	xch	A, B
+	mov	C, B.7						; Multiply result by 2 (unity gain is 128)
+	rlc	A
+	mov	Pwm_Limit_Beg, A				; Set initial pwm limit
+	ret
